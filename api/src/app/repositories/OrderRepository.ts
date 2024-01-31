@@ -18,5 +18,15 @@ export const OrderRepository = {
   async create({table,products}: OrderProps) {
     const product = await Order.create({table, products})
     return product
+  },
+
+  async changeStatus(orderId: string, status: string) {
+    const order = await Order.findByIdAndUpdate(orderId, {status})
+    return order
+  },
+
+  async cancel(orderId: string) {
+    const order = await Order.findByIdAndDelete(orderId)
+    return order
   }
 }
