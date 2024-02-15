@@ -44,6 +44,10 @@ export const GlobalStyles = createGlobalStyle`
     font-family: GeneralSans, sans-serif;
   }
 
+  html {
+    font-size: 62.5%;
+  }
+
   body {
     background: #fafafa;
     color: #333;
