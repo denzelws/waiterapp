@@ -1,4 +1,5 @@
 import Header from "./components/Header";
+import SectionOrders from "./components/SectionOrders";
 import { GlobalStyles } from "./styles/globals";
 
 export default function App() {
@@ -6,6 +7,7 @@ export default function App() {
     <>
     <GlobalStyles />
     <Header />
+    <SectionOrders />
     </>
   )
 }
