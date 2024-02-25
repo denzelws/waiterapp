@@ -1,4 +1,5 @@
 import Header from "./components/Header"
+import OrdersList from "./components/OrdersList"
 import SectionOrders from "./components/SectionOrders"
 import SliderOrders from "./components/SliderOrders"
 
@@ -11,6 +12,7 @@ export default function App() {
     <Header />
     <SliderOrders />
     <SectionOrders/>
+    <OrdersList />
     </>
   )
 }
