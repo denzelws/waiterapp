@@ -1,46 +1,16 @@
+import OrderBox from '../OrderBox'
+import { ordersData } from './mock'
+
 import * as S from './styles'
+
+const colors = ['#FFD954', '#FF5454', '#9FFF54']
 
 const SectionOrders = () => {
   return (
     <S.Wrapper>
-      <S.Box>
-        <S.HeaderWrapper>
-          <span>-</span>
-          <strong>Fila de espera</strong>
-          <span>(1)</span>
-        </S.HeaderWrapper>
-
-        <S.HeaderBoxInfo>
-          <span>🙄</span>
-          <strong>Contando os minutos</strong>
-        </S.HeaderBoxInfo>
-      </S.Box>
-
-      <S.Box>
-        <S.HeaderWrapper>
-          <span>-</span>
-          <strong>Em produção</strong>
-          <span>(1)</span>
-        </S.HeaderWrapper>
-
-        <S.HeaderBoxInfo>
-          <span>🕵️‍♂</span>
-          <strong>Espiando o forno</strong>
-        </S.HeaderBoxInfo>
-      </S.Box>
-
-      <S.Box>
-        <S.HeaderWrapper>
-          <span>-</span>
-          <strong>Pronto</strong>
-          <span>(1)</span>
-        </S.HeaderWrapper>
-
-        <S.HeaderBoxInfo>
-          <span>🎉</span>
-          <strong>Seu presente chegou</strong>
-        </S.HeaderBoxInfo>
-      </S.Box>
+      {ordersData.map((order, index) => (
+        <OrderBox key={index} {...order} color={colors[index % colors.length]}/>
+      ))}
     </S.Wrapper>
   )
 }

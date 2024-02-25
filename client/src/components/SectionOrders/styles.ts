@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -8,6 +9,10 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10rem;
+
+  ${media.lessThan("medium")`
+    display: none;
+  `}
   `
 
 export const HeaderWrapper = styled.header`
