@@ -23,11 +23,39 @@ export const Grid = styled.div`
 
 
 export const Card = styled.div`
-  border: 0.1rem solid yellow;
+  border-top: 0.1rem solid;
   width: 100%;
+  max-width: 23.7rem;
   height: 13rem;
+  background: #9E9898;
   margin-bottom: 1rem;
+  border-radius: 2rem 2rem 0 0;
+  position: relative;
+  overflow: hidden;
+
+  // closing effect
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 25%;
+  }
+
+  &:nth-child(odd) {
+    &:before {
+      background-color: green;
+    }
+  }
+
+  &:nth-child(even) {
+    &:before {
+      background-color: red;
+    }
+  }
 `
+
 
 export const Column = styled.div`
   display: flex;
