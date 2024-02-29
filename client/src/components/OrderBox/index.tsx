@@ -4,7 +4,7 @@ export type OrderBoxProps = {
   title: string
   emoji: string
   description: string
-  color: string
+  color?: string
 }
 
 const OrderBox = ({title, emoji, description, color}: OrderBoxProps) => {
