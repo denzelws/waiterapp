@@ -65,6 +65,7 @@ export const Card = styled.div`
   position: relative;
   overflow: hidden;
   padding: 4rem 1rem 0.6rem 1.4rem;
+  cursor: pointer;
 
   &:before {
     content: "";
