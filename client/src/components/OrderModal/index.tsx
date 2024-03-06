@@ -1,13 +1,15 @@
 import xcloseicon from '../../../src/assets/images/close-icon.svg'
+import { Order } from '../../types/Order'
 import * as S from './styles'
 
 type OrderModalProps = {
   isOpen: boolean
   onClose: () => void
+  order: Order | null
 }
 
-const OrderModal = ({isOpen, onClose}: OrderModalProps) => {
-  return isOpen ? (
+const OrderModal = ({isOpen, onClose, order}: OrderModalProps) => {
+  return isOpen && order ? (
     <S.Wrapper>
       <S.ModalWrapper>
         <S.ModalHeader>
@@ -20,26 +22,40 @@ const OrderModal = ({isOpen, onClose}: OrderModalProps) => {
         </S.ModalHeader>
 
         <S.StatusWrapper>
-          <S.StatusTitle>Status do pedido</S.StatusTitle>
-          <S.StatusInfo>🕵️‍♂ Em produção</S.StatusInfo>
+          <S.StatusTitle>
+            {order.status === 'WAITING' && 'Contando os minutos'}
+            {order.status === 'IN_PRODUCTION' && 'Espiando o forno'}
+            {order.status === 'DONE' && 'Seu presente chegou'}
+          </S.StatusTitle>
+          <S.StatusInfo>
+            {order.status === 'WAITING' && '🙄'}
+            {order.status === 'IN_PRODUCTION' && '🕵️‍♀️'}
+            {order.status === 'DONE' && '🎉'}
+          </S.StatusInfo>
         </S.StatusWrapper>
 
         <S.ItemsWrapper>
           <S.ItemListHeader>Itens</S.ItemListHeader>
-          <S.BoxItems>
-            <S.Item>
-              <S.ItemImage>imagem</S.ItemImage>
 
-              <S.ItemDetails>
-                <S.Quantity>1x</S.Quantity>
+          <S.Item>
+          {order.products.map(({_id, product, quantity}) => (
+            <div key={_id}>
+                <img
+                  src={`http://localhost:3001/uploads/${product.imagePath}`}
+                  alt={product.name}
+                  width="56"
+                  height="28.51"
+                />
 
-                <S.ItemInfo>
-                <S.ItemName>Frango</S.ItemName>
-                <S.ItemPrice>R$40,00</S.ItemPrice>
-                </S.ItemInfo>
-              </S.ItemDetails>
-            </S.Item>
-          </S.BoxItems>
+                <span>{quantity}x</span>
+
+                <div>
+                  <strong>{product.name}</strong>
+                  <strong>{`R$${product.price}.00`}</strong>
+                </div>
+              </div>
+          ))}
+          </S.Item>
         </S.ItemsWrapper>
       </S.ModalWrapper>
     </S.Wrapper>

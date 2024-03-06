@@ -18,6 +18,6 @@ type Products = {
 export interface Order {
   _id: string
   table: string
-  status: string
+  status: 'WAITING' | 'IN_PRODUCTION' | 'DONE'
   products: Products[]
 }

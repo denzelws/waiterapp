@@ -54,24 +54,20 @@ export const StatusInfo = styled.h3`
 `
 
 export const ItemsWrapper = styled.div`
-margin-top: 3.2rem;
+margin-top: 1.6rem;
 `
 
 export const BoxItems = styled.div``
 
 export const Item = styled.div`
 display: flex;
-align-items: center;
-gap: 4rem;
 `
 
 export const ItemImage = styled.div`
 height: 100%;
 `
 
-export const ItemDetails = styled.div`
-display: flex;
-gap: 1rem;
+export const OrderItems = styled.div`
 `
 
 export const ItemInfo = styled.div`
