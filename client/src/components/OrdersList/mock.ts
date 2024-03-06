@@ -40,6 +40,7 @@ export const ordersMock: Order[] = [
     {
       "product": {
         "name": "Coca cola",
+        "imagePath": "1706624408238-coca-cola.png",
         "price": 7,
         "ingredients": [],
       },
@@ -51,7 +52,7 @@ export const ordersMock: Order[] = [
 {
   "_id": "65b9848446f7b92fc666dc08",
   "table": "321",
-  "status": "IN_PRODUCTION",
+  "status": "WAITING",
   "products": [
     {
       "product": {
@@ -87,6 +88,7 @@ export const ordersMock: Order[] = [
     {
       "product": {
         "name": "Coca cola",
+        "imagePath": "1706624408238-coca-cola.png",
         "price": 7,
         "ingredients": [],
       },

@@ -1,15 +1,18 @@
 import { useState } from 'react'
-import svgArrow from '../../assets/images/arrow-down.svg'
 import { ordersMock } from './mock'
+import svgArrow from '../../assets/images/arrow-down.svg'
+import OrderModal from '../OrderModal'
 
 import * as S from './styles'
-import OrderModal from '../OrderModal'
+import { Order } from '../../types/Order'
 
 const OrdersList = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const [selectedOrder, setSelectedOrder] = useState<null | Order>(null)
 
-  const handleOpenModal = () => {
+  const handleOpenModal = (order: Order) => {
     setIsOpen(true)
+    setSelectedOrder(order)
   }
 
   const handleCloseModal = () => {
@@ -20,7 +23,7 @@ const OrdersList = () => {
     <S.Wrapper>
       <S.Grid>
         {ordersMock.map((order, i) => (
-          <S.Card key={i} onClick={handleOpenModal}>
+          <S.Card key={i} onClick={() => handleOpenModal(order)}>
             {order.products.map(({ product, quantity }, i) => {
               const { name: title, ingredients } = product;
               return (
@@ -48,7 +51,7 @@ const OrdersList = () => {
         <S.DownArrow src={svgArrow} alt='Arrow Down Icon' />
       </S.ShowMore>
 
-      <OrderModal isOpen={isOpen} onClose={handleCloseModal}/>
+      <OrderModal isOpen={isOpen} onClose={handleCloseModal} order={selectedOrder}/>
     </S.Wrapper>
   );
 }
