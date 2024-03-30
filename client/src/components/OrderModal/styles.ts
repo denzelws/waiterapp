@@ -54,13 +54,100 @@ export const StatusInfo = styled.h3`
 `
 
 export const ItemsWrapper = styled.div`
-margin-top: 1.6rem;
+margin-top: 1.5rem;
+`
+
+export const Actions = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 3.2rem;
+
+  span {
+    margin-right: 0.8rem;
+  }
+  
+  button {
+    padding: 1.1rem 2.4rem;
+    border-radius: 4.8rem;
+    font-size: 1.6rem;
+
+    &:first-of-type {
+      background: #333333;
+      color: #FFFFFF;
+    }
+
+    &:last-of-type {
+      background: transparent;
+      color: #D73035;
+      border: none;
+    }
+  }
 `
 
 export const BoxItems = styled.div``
 
-export const Item = styled.div`
+export const Items = styled.div`
+margin-top: 1.5rem;
+`
+
+export const Total = styled.div`
 display: flex;
+align-items: center;
+justify-content: space-between;
+margin-top: 2.4rem;
+
+span {
+  font-size: 1.4rem;
+  color: #666;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+strong {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #333333;
+}
+`
+
+export const Item = styled.div`
+  display: flex;
+
+  img {
+    border-radius: 0.6rem;
+  }
+
+  span {
+    color: #666;
+    font-size: 1.4rem;
+    display: block;
+    min-width: 2rem;
+    margin-left: 1.2rem;
+  }
+
+  & + & {
+    margin-top: 1.6rem;
+  }
+`
+
+export const ProductDetails = styled.div`
+  margin-left: 0.4rem;
+
+  strong {
+    display: block;
+    margin-bottom: 0.3rem;
+    
+    &:first-of-type {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+
+    &:last-of-type {
+      font-size: 1.4rem;
+      color: #666;
+    }
+  }
 `
 
 export const ItemImage = styled.div`

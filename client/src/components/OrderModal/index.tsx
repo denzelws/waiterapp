@@ -1,4 +1,5 @@
 import xcloseicon from '../../../src/assets/images/close-icon.svg'
+import { formatCurrency } from '../../../src/utils/formatCurrency'
 import { Order } from '../../types/Order'
 import * as S from './styles'
 
@@ -9,6 +10,10 @@ type OrderModalProps = {
 }
 
 const OrderModal = ({isOpen, onClose, order}: OrderModalProps) => {
+  const total = order?.products.reduce((acc, {product, quantity}) => {
+    return acc + (product.price * quantity)
+  }, 0)
+
   return isOpen && order ? (
     <S.Wrapper>
       <S.ModalWrapper>
@@ -37,9 +42,9 @@ const OrderModal = ({isOpen, onClose, order}: OrderModalProps) => {
         <S.ItemsWrapper>
           <S.ItemListHeader>Itens</S.ItemListHeader>
 
-          <S.Item>
+          <S.Items>
           {order.products.map(({_id, product, quantity}) => (
-            <div key={_id}>
+            <S.Item key={_id}>
                 <img
                   src={`http://localhost:3001/uploads/${product.imagePath}`}
                   alt={product.name}
@@ -49,14 +54,30 @@ const OrderModal = ({isOpen, onClose, order}: OrderModalProps) => {
 
                 <span>{quantity}x</span>
 
-                <div>
+                <S.ProductDetails>
                   <strong>{product.name}</strong>
-                  <strong>{`R$${product.price}.00`}</strong>
-                </div>
-              </div>
+                  <strong>{formatCurrency(product.price)}</strong>
+                </S.ProductDetails>
+              </S.Item>
           ))}
-          </S.Item>
+          </S.Items>
+
+          <S.Total>
+            <span>Total</span>
+            <strong>{formatCurrency(Number(total))}</strong>
+          </S.Total>
         </S.ItemsWrapper>
+
+        <S.Actions>
+          <button>
+            <span>🕵️‍♂️</span>
+            <strong>Iniciar Observação</strong>
+          </button>
+
+          <button>
+            <strong>Cancelar o pedido</strong>
+          </button>
+        </S.Actions>
       </S.ModalWrapper>
     </S.Wrapper>
   ) : null
